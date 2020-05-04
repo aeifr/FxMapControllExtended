@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import fxmapcontrol.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="fxmap.extend.sampleApplication.FXMLController"
+            prefHeight="600" prefWidth="800">
+    <center>
+        <fxmapcontrol.Map fx:id="map" center="53.5,9" maxZoomLevel="20" onMousePressed="#handlePressed" >
+            <MapGraticule fx:id="mapGraticule" />
+            
+            <MapNode location="54,8">
+                <Label text=" N 54° E 8° " style="-fx-background-color: white;" translateY="-20" />
+            </MapNode>
+        </fxmapcontrol.Map>
+    </center>
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <BorderPane.margin>
+                <Insets left="5" right="5" top="5" bottom="5" />
+            </BorderPane.margin>
+            <Slider fx:id="zoomSlider" min="1" max="20" value="9"/>
+            <Slider fx:id="headingSlider" max="360"/>
+            <CheckBox fx:id="seamarksCheckBox" text="Seamarks"/>
+            <CheckBox fx:id="shiftPolygonsCheckBox" text="Shift Polygons"/>
+            <ComboBox fx:id="mapLayerComboBox">
+                <items> 
+                    <FXCollections fx:factory="observableArrayList"> 
+                        <String fx:value="OpenStreetMap" /> 
+                        <String fx:value="OpenStreetMap DE" /> 
+                        <String fx:value="Stamen Terrain" /> 
+                        <String fx:value="OpenStreetMap WMS" /> 
+                        <String fx:value="ChartServer WMS" />
+                        <String fx:value="TopPlusOpen WMS" />
+                        <String fx:value="TopPlusOpen WMTS" />
+                    </FXCollections> 
+                </items> 
+            </ComboBox>
+            <ComboBox fx:id="projectionComboBox">
+                <items> 
+                    <FXCollections fx:factory="observableArrayList"> 
+                        <String fx:value="WebMercator" /> 
+                        <String fx:value="WorldMercator" /> 
+                        <String fx:value="Equirectangular" /> 
+                        <String fx:value="Orthographic" /> 
+                        <String fx:value="Gnomonic" /> 
+                        <String fx:value="Stereographic" /> 
+<!--                        <String fx:value="UTM Zone 32N - WGS84" /> -->
+<!--                        <String fx:value="UTM Zone 32N - ETRS89" /> -->
+<!--                        <String fx:value="UPS North" /> -->
+                    </FXCollections> 
+                </items> 
+            </ComboBox>
+        </HBox>
+    </bottom>
+</BorderPane>
